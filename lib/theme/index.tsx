@@ -16,4 +16,7 @@ export const theme = createTheme({
       paper: "hsl(0, 0%, 100%)",
     },
   },
+  typography: {
+    fontFamily: '',
+  },
 });

@@ -1,11 +1,14 @@
 import type { AppProps } from "next/app";
 import { theme } from "lib/theme";
 import { ThemeProvider } from "@emotion/react";
+import { PageLayout } from "lib/layouts/pageLayout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <PageLayout>
+        <Component {...pageProps} />
+      </PageLayout>
     </ThemeProvider>
   );
 }
