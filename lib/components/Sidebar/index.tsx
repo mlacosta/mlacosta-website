@@ -42,6 +42,7 @@ export const Sidebar = ({
   isSidebarOpen,
   setIsSidebarOpen,
 }: SidebarProps) => {
+  
   const isSmallScreen = useMediaQuery<Theme>((theme) =>
     theme.breakpoints.down("lg")
   );
