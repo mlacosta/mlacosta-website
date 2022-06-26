@@ -17,6 +17,6 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '',
+    fontFamily: "Oxygen, sans-serif",
   },
 });
