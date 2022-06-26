@@ -11,9 +11,9 @@ import {
 } from "@mui/material";
 
 import { constantCase } from "change-case";
+import { SIDEBAR_WIDTH } from "lib/theme";
 import type { MenuItem as MenuItems } from "./types";
 
-const SIDEBAR_WIDTH = "300px";
 const AVATAR_SIZE = "150px";
 
 const SIDEBAR_STYLES = {
@@ -28,10 +28,15 @@ const SIDEBAR_STYLES = {
 interface SidebarProps {
   menuItems: MenuItems[];
   onSelectItem: (value: string) => void;
+  isSidebarOpen: boolean;
 }
 
-export const Sidebar = ({ menuItems, onSelectItem }: SidebarProps) => (
-  <Drawer open>
+export const Sidebar = ({
+  menuItems,
+  onSelectItem,
+  isSidebarOpen,
+}: SidebarProps) => (
+  <Drawer open={isSidebarOpen} BackdropProps={{ invisible: true }}>
     <Stack divider={<Divider flexItem light />} spacing={2} sx={SIDEBAR_STYLES}>
       <Avatar
         src="./profile-pic.jpeg"
@@ -56,7 +61,7 @@ const MenuItems = ({
 }: Pick<SidebarProps, "menuItems" | "onSelectItem">) =>
   menuItems.map(({ name, isSelected }) => (
     <ListItem key={name} id={name}>
-      <ListItemButton onClick={() => onSelectItem(name)} selected={isSelected} >
+      <ListItemButton onClick={() => onSelectItem(name)} selected={isSelected}>
         <ListItemText
           primary={constantCase(name)}
           sx={{ textAlign: "center" }}

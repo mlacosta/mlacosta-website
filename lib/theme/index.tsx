@@ -1,6 +1,8 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 
-const palette = {
+export const SIDEBAR_WIDTH = "300px";
+
+export const palette = {
   primary: {
     main: "hsl(219, 37%, 17%)",
     dark: "hsl(211, 53%, 11%)",
