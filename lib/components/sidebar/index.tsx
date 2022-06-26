@@ -7,7 +7,6 @@ import {
   ListItemButton,
   ListItemText,
   Stack,
-  Typography,
 } from "@mui/material";
 
 import { constantCase } from "change-case";
@@ -49,7 +48,7 @@ export const Sidebar = ({ menuItems, onSelectItem }: SidebarProps) => (
       {/**
        * <Typography>© 2022 Mariano L. Acosta </Typography>
        */}
-      <Image src="/mla.svg" height={60} width={80} />
+      <Image src="/mla.svg" height={60} width={80} alt="mla-logo" />
     </Stack>
   </Drawer>
 );
