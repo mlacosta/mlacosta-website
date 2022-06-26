@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import { Sidebar } from "lib/components/sidebar";
+import { Sidebar } from "lib/components/Sidebar";
 import { paramCase } from "change-case";
 import Router from "next/router";
 import { useEffect, useState } from "react";

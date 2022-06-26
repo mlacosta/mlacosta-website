@@ -7,11 +7,11 @@ import {
   ListItemButton,
   ListItemText,
   Stack,
+  Typography,
 } from "@mui/material";
 
 import { constantCase } from "change-case";
 import type { MenuItem as MenuItems } from "./types";
-import Image from "next/image";
 
 const SIDEBAR_WIDTH = "300px";
 const AVATAR_SIZE = "150px";
@@ -37,7 +37,6 @@ export const Sidebar = ({ menuItems, onSelectItem }: SidebarProps) => (
         src="./profile-pic.jpeg"
         sx={{ width: AVATAR_SIZE, height: AVATAR_SIZE }}
       />
-
       <List
         sx={{
           width: SIDEBAR_WIDTH,
@@ -45,10 +44,8 @@ export const Sidebar = ({ menuItems, onSelectItem }: SidebarProps) => (
       >
         {MenuItems({ menuItems, onSelectItem })}
       </List>
-      {/**
-       * <Typography>© 2022 Mariano L. Acosta </Typography>
-       */}
-      <Image src="/mla.svg" height={60} width={80} alt="mla-logo" />
+      <Typography variant="caption">© 2022 Mariano L. Acosta </Typography>
+      {/* <Image src="/mla.svg" height={60} width={80} alt="mla-logo" />*/}
     </Stack>
   </Drawer>
 );
@@ -58,8 +55,8 @@ const MenuItems = ({
   onSelectItem,
 }: Pick<SidebarProps, "menuItems" | "onSelectItem">) =>
   menuItems.map(({ name, isSelected }) => (
-    <ListItem key={name}>
-      <ListItemButton onClick={() => onSelectItem(name)} selected={isSelected}>
+    <ListItem key={name} id={name}>
+      <ListItemButton onClick={() => onSelectItem(name)} selected={isSelected} >
         <ListItemText
           primary={constantCase(name)}
           sx={{ textAlign: "center" }}
