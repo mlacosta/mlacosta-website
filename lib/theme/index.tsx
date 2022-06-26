@@ -12,6 +12,9 @@ export const palette = {
     primary: "hsl(75, 6%, 87%)",
     secondary: "hsl(214, 23%, 56%)",
   },
+  info: {
+    main: "hsl(75, 6%, 87%)",
+  },
   background: {
     default: "hsl(219, 37%, 17%)",
     paper: "hsl(0, 0%, 100%)",

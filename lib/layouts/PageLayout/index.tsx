@@ -7,6 +7,8 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { PARTICLE_OPTIONS, MENU_ITEMS } from "./constants";
 import type { Engine } from "tsparticles-engine";
+import { Menu } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 
 interface PageLayoutProps {
   children: JSX.Element;
@@ -18,12 +20,8 @@ export function PageLayout({ children }: PageLayoutProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const isSmallScreen = useMediaQuery<Theme>((theme) =>
-    theme.breakpoints.down("md")
+    theme.breakpoints.down("lg")
   );
-
-  const particlesInit = async (main: Engine) => {
-    await loadFull(main);
-  };
 
   useEffect(() => {
     setMenuItems((items) =>
@@ -38,6 +36,15 @@ export function PageLayout({ children }: PageLayoutProps) {
   const handleSelectItem = (sectionName: string) => {
     setSelectedItem(sectionName);
     Router.push(`/${paramCase(sectionName)}`);
+    if (isSmallScreen) {
+      setIsSidebarOpen(false);
+    }
+  };
+
+  const handleToggleMenu = () => setIsSidebarOpen(!isSidebarOpen);
+
+  const particlesInit = async (main: Engine) => {
+    await loadFull(main);
   };
 
   return (
@@ -46,8 +53,14 @@ export function PageLayout({ children }: PageLayoutProps) {
         menuItems={menuItems}
         onSelectItem={handleSelectItem}
         isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
       />
       <Particles init={particlesInit} options={PARTICLE_OPTIONS} />
+      {!isSidebarOpen && (
+        <IconButton size="large" color="info" onClick={handleToggleMenu}>
+          <Menu />
+        </IconButton>
+      )}
       {children}
     </Container>
   );
