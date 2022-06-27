@@ -1,4 +1,4 @@
-import { Container, Theme, useMediaQuery } from "@mui/material";
+import { Container, Theme, useMediaQuery, IconButton } from "@mui/material";
 import { Sidebar } from "lib/components/Sidebar";
 import { paramCase } from "change-case";
 import Router, { useRouter } from "next/router";
@@ -7,11 +7,12 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { PARTICLE_OPTIONS, MENU_ITEMS } from "./constants";
 import type { Engine } from "tsparticles-engine";
-import { Menu } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
+import { Menu as MenuIcon } from "@mui/icons-material";
+
+import { updateMenuItems } from "./utils";
 
 interface PageLayoutProps {
-  children: JSX.Element;
+  children?: JSX.Element;
 }
 
 export function PageLayout({ children }: PageLayoutProps) {
@@ -25,27 +26,16 @@ export function PageLayout({ children }: PageLayoutProps) {
   const { pathname } = useRouter();
 
   useEffect(() => {
-    const currentRoute = pathname.split("/")[1];
-    setMenuItems((items) =>
-      items.map(({ name }, key) => {
-        return {
-          name,
-          isSelected:
-            currentRoute === name || (key === 0 && currentRoute === ""),
-        };
-      })
-    );
-  }, [pathname, setMenuItems, useRouter]);
+    setMenuItems(updateMenuItems({ pathname }));
+  }, [pathname, setMenuItems]);
 
   useEffect(() => {
     setIsSidebarOpen(!isScreenSmall);
-  }, [isScreenSmall]);
+  }, [isScreenSmall, setIsSidebarOpen]);
 
   const handleSelectItem = (sectionName: string) => {
     Router.push(`/${paramCase(sectionName)}`);
-    if (isScreenSmall) {
-      setIsSidebarOpen(false);
-    }
+    if (isScreenSmall) setIsSidebarOpen(false);
   };
 
   const handleToggleMenu = () => setIsSidebarOpen(!isSidebarOpen);
@@ -65,7 +55,7 @@ export function PageLayout({ children }: PageLayoutProps) {
       <Particles init={particlesInit} options={PARTICLE_OPTIONS} />
       {!isSidebarOpen && (
         <IconButton size="large" color="info" onClick={handleToggleMenu}>
-          <Menu />
+          <MenuIcon />
         </IconButton>
       )}
       {children}
