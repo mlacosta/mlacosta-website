@@ -26,7 +26,7 @@ export const theme = createTheme({
   typography: {
     fontFamily: "Oxygen, sans-serif",
     caption: {
-      fontSize: "0.85rem",
+      fontSize: "0.8rem",
       color: palette.text.secondary,
     },
   },

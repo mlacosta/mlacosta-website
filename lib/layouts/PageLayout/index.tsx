@@ -1,7 +1,7 @@
 import { Container, Theme, useMediaQuery } from "@mui/material";
 import { Sidebar } from "lib/components/Sidebar";
 import { paramCase } from "change-case";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
@@ -16,27 +16,34 @@ interface PageLayoutProps {
 
 export function PageLayout({ children }: PageLayoutProps) {
   const [menuItems, setMenuItems] = useState(MENU_ITEMS);
-  const [selectedItem, setSelectedItem] = useState(MENU_ITEMS[0].name);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  const isSmallScreen = useMediaQuery<Theme>((theme) =>
+  const isScreenSmall = useMediaQuery<Theme>((theme) =>
     theme.breakpoints.down("lg")
   );
 
-  useEffect(() => {
-    setMenuItems((items) =>
-      items.map(({ name }) => ({ name, isSelected: selectedItem === name }))
-    );
-  }, [selectedItem, setMenuItems]);
+  const { pathname } = useRouter();
 
   useEffect(() => {
-    setIsSidebarOpen(!isSmallScreen);
-  }, [isSmallScreen]);
+    const currentRoute = pathname.split("/")[1];
+    setMenuItems((items) =>
+      items.map(({ name }, key) => {
+        return {
+          name,
+          isSelected:
+            currentRoute === name || (key === 0 && currentRoute === ""),
+        };
+      })
+    );
+  }, [pathname, setMenuItems, useRouter]);
+
+  useEffect(() => {
+    setIsSidebarOpen(!isScreenSmall);
+  }, [isScreenSmall]);
 
   const handleSelectItem = (sectionName: string) => {
-    setSelectedItem(sectionName);
     Router.push(`/${paramCase(sectionName)}`);
-    if (isSmallScreen) {
+    if (isScreenSmall) {
       setIsSidebarOpen(false);
     }
   };
