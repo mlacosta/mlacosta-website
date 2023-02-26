@@ -31,6 +31,7 @@ export function PageLayout({ children }: PageLayoutProps) {
           border={`1px solid ${theme.palette.text.primary}`}
           height={`calc(100vh - ${MAIN_MARGIN});`}
           width={`calc(100% - ${MAIN_MARGIN});`}
+          p={5}
         >
           {children}
         </Box>

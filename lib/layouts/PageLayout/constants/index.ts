@@ -10,32 +10,10 @@ export const MENU_ITEMS = [
 ];
 
 export const PARTICLE_OPTIONS: ISourceOptions = {
-  background: {
-    color: {
-      value: palette.primary.main,
-    },
-  },
-  fpsLimit: 120,
+  fpsLimit: 60,
   interactivity: {
     events: {
-      onClick: {
-        enable: true,
-        mode: 'attract',
-      },
-      onHover: {
-        enable: true,
-        mode: 'attract',
-      },
       resize: true,
-    },
-    modes: {
-      push: {
-        quantity: 4,
-      },
-      attract: {
-        distance: 200,
-        duration: 0.4,
-      },
     },
   },
   particles: {
@@ -50,11 +28,11 @@ export const PARTICLE_OPTIONS: ISourceOptions = {
       width: 1,
     },
     collisions: {
-      enable: true,
+      enable: false,
     },
     move: {
-      direction: 'bottom-left',
-      enable: false,
+      direction: 'outside',
+      enable: true,
       outModes: {
         default: 'bounce',
       },
@@ -65,7 +43,7 @@ export const PARTICLE_OPTIONS: ISourceOptions = {
     number: {
       density: {
         enable: true,
-        area: 100,
+        area: 500,
       },
       value: 80,
     },
