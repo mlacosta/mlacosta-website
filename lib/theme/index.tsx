@@ -41,7 +41,7 @@ export const theme = createTheme({
       color: palette.primary.main,
     },
     h6: {
-      fontSize: '1rem',
+      fontSize: '1.2rem',
       fontWeight: 300,
       color: palette.text.secondary,
     },
