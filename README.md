@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  Front-end Monorepo Template
+  Next.js Template
   <br>
 </h1>
 
@@ -34,11 +34,9 @@ $ yarn storybook:run
 This repo uses the following open source packages:
 
 - [Husky](typicode.github.io/husky)
-- [Jest](https://jestjs.io/)
 - [Next.js](https://nextjs.org)
 - [Prettier](https://www.npmjs.com/package/prettier)
 - [Renovate](https://github.com/renovatebot)
-- [Storybook](https://storybook.js.org/)
 
 ## How to contribute
 
