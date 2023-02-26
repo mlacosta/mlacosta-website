@@ -24,7 +24,7 @@ export const PARTICLE_OPTIONS: ISourceOptions = {
       color: palette.primary.light,
       distance: 150,
       enable: true,
-      opacity: 0.5,
+      opacity: 0.2,
       width: 1,
     },
     collisions: {
@@ -51,10 +51,10 @@ export const PARTICLE_OPTIONS: ISourceOptions = {
       value: 0.5,
     },
     shape: {
-      type: 'circle',
+      type: 'square',
     },
     size: {
-      value: { min: 1, max: 5 },
+      value: { min: 1, max: 3 },
     },
   },
   detectRetina: true,
