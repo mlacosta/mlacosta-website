@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-export const MAIN_MARGIN = '100px';
+export const MAIN_MARGIN = '200px';
 
 export const palette = {
   primary: {
@@ -24,9 +24,25 @@ export const palette = {
 export const theme = createTheme({
   palette,
   typography: {
+    fontSize: 14,
     fontFamily: 'Oxygen, sans-serif',
     caption: {
       fontSize: '0.8rem',
+      color: palette.text.secondary,
+    },
+    h1: {
+      fontSize: '2rem',
+      fontWeight: 300,
+      color: palette.primary.dark,
+    },
+    h3: {
+      fontSize: '1.5rem',
+      fontWeight: 300,
+      color: palette.primary.main,
+    },
+    h6: {
+      fontSize: '1rem',
+      fontWeight: 300,
       color: palette.text.secondary,
     },
   },
