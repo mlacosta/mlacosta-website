@@ -6,7 +6,7 @@ export const Name = () => {
   return (
     <Stack>
       <Typography variant={isSmallScreen ? 'h3' : 'h1'}>Mariano L. Acosta</Typography>
-      <Typography variant="h6">Software Engineer</Typography>
+      <Typography variant="h6">Electronics & Software Engineer</Typography>
     </Stack>
   );
 };
